@@ -1,8 +1,5 @@
 const express = require('express');
 const path = require('path');
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,10 +8,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (CSS, JS) from root directory
+// Serve static files (CSS, JS, images) from root directory
 app.use(express.static(__dirname));
 
-// Simple contact endpoint
+// Contact form endpoint
 app.post('/api/contact', (req, res) => {
     const { name, email, phone, message } = req.body;
     
@@ -28,7 +25,7 @@ app.post('/api/contact', (req, res) => {
     res.status(200).json({ message: 'Message received successfully! We will contact you soon.' });
 });
 
-// Serve HTML files (since they are in root)
+// Routes for your HTML files (all in root)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
