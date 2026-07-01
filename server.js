@@ -15,6 +15,14 @@ app.use(express.static(__dirname));
 app.post('/api/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
 
+    console.log('=== New Contact Form Submission ===');
+    console.log(`Name: ${name}`);
+    console.log(`Email: ${email}`);
+    console.log(`Phone: ${phone || 'Not provided'}`);
+    console.log(`Message: ${message}`);
+    console.log('===================================');
+    res.json({ error: false, message: "Message sent successfully. We will contact you soon" });
+    
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -30,15 +38,6 @@ app.post('/api/contact', async (req, res) => {
             subject: `New contact from ${name}`,
             text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
         });
-        
-        console.log('=== New Contact Form Submission ===');
-        console.log(`Name: ${name}`);
-        console.log(`Email: ${email}`);
-        console.log(`Phone: ${phone || 'Not provided'}`);
-        console.log(`Message: ${message}`);
-        console.log('===================================');
-        
-        res.status(200).json({ message: 'Message received successfully! We will contact you soon.' });
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: true, message: "500- Internal Server error" });
