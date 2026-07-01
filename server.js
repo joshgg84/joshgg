@@ -57,6 +57,13 @@ app.post('/api/contact', upload.array('attachments', 5), async (req, res) => {
     const { name, email, phone, message } = req.body;
     const files = req.files || [];
 
+console.log('=== REQUEST DEBUG ===');
+    console.log('Body:', req.body);
+    console.log('Files:', req.files);
+    console.log('File count:', req.files ? req.files.length : 0);
+    console.log('Content-Type:', req.headers['content-type']);
+    console.log('=====================');
+
     // Log submission
     console.log('=== New Contact Form Submission ===');
     console.log(`Name: ${name}`);
