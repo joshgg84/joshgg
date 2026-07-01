@@ -51,6 +51,7 @@
                     </div>
                     
                     <div class="contact-form">
+                        <!-- ✅ Added enctype="multipart/form-data" for file uploads -->
                         <form id="contactForm" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
@@ -67,10 +68,27 @@
                             <div class="form-group">
                                 <label for="message">Project Details *</label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
-                                <input type="file" name="attachments" accept="image/png,image/jpeg,video/mp4" multiple>
                             </div>
+                            
+                            <!-- ✅ FIXED: Field name must be "attachments" -->
+                            <div class="form-group">
+                                <label for="attachments">Attach Photos or Videos</label>
+                                <input 
+                                    type="file" 
+                                    id="attachments" 
+                                    name="attachments" 
+                                    accept="image/jpeg,image/png,image/gif,video/mp4" 
+                                    multiple
+                                >
+                                <small>Max 5 files • 25MB each • JPG, PNG, GIF, MP4 allowed</small>
+                                <div id="fileList" class="file-list"></div>
+                            </div>
+                            
                             <div id="formMessage" class="form-message"></div>
-                            <button type="submit" class="btn-primary btn-full">Send Message</button>
+                            <button type="submit" class="btn-primary btn-full" id="submitBtn">
+                                <span id="btnText">Send Message</span>
+                                <span id="btnSpinner" style="display:none;">⏳ Sending...</span>
+                            </button>
                         </form>
                     </div>
                 </div>
