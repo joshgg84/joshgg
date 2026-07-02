@@ -1,21 +1,12 @@
 {
-  "name": "joshgg-contact-form",
+  "name": "joshgg-contact",
   "version": "1.0.0",
-  "description": "Contact form with file uploads using Nodemailer and Multer",
+  "description": "Contact form with file uploads and auto-cleanup",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": [
-    "contact-form",
-    "nodemailer",
-    "multer",
-    "file-upload",
-    "express"
-  ],
-  "author": "JoshGG",
-  "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
