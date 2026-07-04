@@ -232,7 +232,8 @@ app.post('/api/contact', upload.array('attachments', 5), async (req, res) => {
 
             await transporter.sendMail({
                 from: `"Contact Form" <${process.env.EMAIL_USER}>`,
-                to: 'joshuagiwa440@gmail.com',
+                to: process.env.EMAIL_USER,
+                replyTo: email,
                 subject: `New contact from ${name}`,
                 text: emailText,
                 attachments: attachments
